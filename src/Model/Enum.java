@@ -7,6 +7,11 @@ public class Enum {
     }
     public enum Organization
     {
-        HOTLINE, POLICE, REDCROSS, FIREMEN
+        HOTLINE;
+
+        public enum SecurityForces
+        {
+            POLICE, REDCROSS, FIREMEN
+        }
     }
 }
