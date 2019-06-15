@@ -52,8 +52,5 @@ public class TestModel implements IModel {
         events.add(event);
     }
 
-    @Override
-    public void addUser(User user) {
 
-    }
 }
