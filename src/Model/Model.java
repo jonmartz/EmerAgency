@@ -82,7 +82,7 @@ public class Model implements IModel {
         try {
             openConnection();
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from users where username='" + username + "'");
+            ResultSet rs = statement.executeQuery("select * from users where ID='" + username + "'");
             if (rs.next()) {
                 String ID = rs.getString("ID");
                 String mail = rs.getString("mail");
@@ -238,7 +238,7 @@ public class Model implements IModel {
             String command = "insert into categories values(" +
                     "'" + category.id + "', " +
                     "'" + category.name + "'" + ")";
-            statement.executeQuery(command);
+            statement.execute(command);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
