@@ -122,7 +122,7 @@ public class Controller {
         showPopUp("Category '"+category.name+"' created");
     }
 
-    public void setModel(TestModel model) {
+    public void setModel(Model model) {
         this.model = model;
     }
 

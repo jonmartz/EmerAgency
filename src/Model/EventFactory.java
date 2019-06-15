@@ -1,5 +1,6 @@
 package Model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -14,7 +15,7 @@ public class EventFactory {
         ArrayList<Category> categories = new ArrayList<Category>();
         categories.add(category);
 
-        return new Event(nextID++, title, new Date(), Enum.EventState.BEING_HANDLED,
+        return new Event(nextID++, title, LocalDate.now(), Enum.EventState.BEING_HANDLED,
                 organizations, publisherID, categories);
     }
 }
