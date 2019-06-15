@@ -5,11 +5,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Model implements IModel {
+    private static Model instance;
     private Connection connection; // to database
     private User currentUser; // user that is currently signed in
     private int connectionStack = 0; // used to not open more than one connection
 
-    public Model() {
+    public static Model getInstance() {
+        if (instance == null) instance = new Model();
+        return instance;
+    }
+
+    private Model() {
         try {
             openConnection();
             Statement statement = connection.createStatement();
@@ -74,7 +80,6 @@ public class Model implements IModel {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public User getUser(String username) {
@@ -268,7 +273,7 @@ public class Model implements IModel {
                 String addctgr = "insert into eventsCategories values(" +
                         "'" + event.id + "', " +
                         "'" + c.id + "'" + ")";
-                statement.executeUpdate(command);
+                statement.executeUpdate(addctgr);
             }
         } catch (SQLException e) {
             e.printStackTrace();

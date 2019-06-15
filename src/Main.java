@@ -19,7 +19,7 @@ public class Main extends Application {
         primaryStage.setTitle("EmerAgency");
         primaryStage.setScene(new Scene(root, 600, 400));
 
-        Model model = new Model();
+        Model model = Model.getInstance();
         Controller controller = fxmlLoader.getController();
         controller.setModel(model);
         controller.initialize();
