@@ -238,7 +238,7 @@ public class Model implements IModel {
             String command = "insert into categories values(" +
                     "'" + category.id + "', " +
                     "'" + category.name + "'" + ")";
-            statement.executeQuery(command);
+            statement.execute(command);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
