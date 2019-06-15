@@ -15,12 +15,4 @@ public class User {
         this.status = status;
         this.organization = organization;
     }
-
-    public User(String username, String mail, String password, String status, Enum.Organization.SecurityForces organization) {
-        this.username = username;
-        this.mail = mail;
-        this.password = password;
-        this.status = status;
-        this.organization = organization;
-    }
 }

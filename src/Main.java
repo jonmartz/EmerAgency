@@ -19,7 +19,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 600, 400));
 
         Controller controller = fxmlLoader.getController();
-        controller.setModel(new Model.Model()); //todo: change to real model
+        controller.setModel(new Model.Model());
         controller.initialize();
 
         primaryStage.show();

@@ -89,16 +89,16 @@ public class Model implements IModel {
                 String password = rs.getString("password");
                 String status = rs.getString("status");
                 String orgID = rs.getString("orgID");
-                Enum.Organization.SecurityForces orgEnum=null;
+                Enum.Organization orgEnum=null;
                 switch (orgID) {
                     case "POLICE":
-                        orgEnum = Enum.Organization.SecurityForces.POLICE;
+                        orgEnum = Enum.Organization.POLICE;
                         break;
                     case "REDCROSS":
-                        orgEnum = Enum.Organization.SecurityForces.REDCROSS;
+                        orgEnum = Enum.Organization.REDCROSS;
                         break;
                     case "FIREMEN":
-                        orgEnum=Enum.Organization.SecurityForces.FIREMEN;
+                        orgEnum=Enum.Organization.FIREMEN;
 
                 }
                 user = new User(ID,mail,password,status,orgEnum);
@@ -133,17 +133,17 @@ public class Model implements IModel {
                 else{
                     o = Enum.EventState.DONE;
                 }
-                ArrayList<Enum.Organization.SecurityForces> orgs = new ArrayList<>();
+                ArrayList<Enum.Organization> orgs = new ArrayList<>();
                 for (String s : orgID.split(",")) {
                     switch (s) {
                         case "POLICE":
-                            orgs.add(Enum.Organization.SecurityForces.POLICE);
+                            orgs.add(Enum.Organization.POLICE);
                             break;
                         case "REDCROSS":
-                            orgs.add(Enum.Organization.SecurityForces.REDCROSS);
+                            orgs.add(Enum.Organization.REDCROSS);
                             break;
                         case "FIREMEN":
-                            orgs.add(Enum.Organization.SecurityForces.FIREMEN);
+                            orgs.add(Enum.Organization.FIREMEN);
 
                     }
                 }
@@ -249,7 +249,7 @@ public class Model implements IModel {
     @Override
     public void addEvent(Event event) {
         String sf = "";
-        for (Enum.Organization.SecurityForces enu: event.securityForces){
+        for (Enum.Organization enu: event.securityForces){
             sf += ',' + enu.toString();
         }
         try {
