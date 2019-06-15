@@ -10,9 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
-
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Controller {
@@ -201,8 +198,6 @@ public class Controller {
 
     public void checkEvent(Event event){
         findEventEventIDText.setText(String.valueOf(event.id));
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-//        findEventEventDateText.setText(formatter.format(event.date));
         findEventEventDateText.setText(event.date.toString());
         String secForcesString = "";
         for (Enum.Organization securityForce : event.securityForces){

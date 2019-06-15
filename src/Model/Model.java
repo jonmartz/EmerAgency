@@ -82,7 +82,7 @@ public class Model implements IModel {
         try {
             openConnection();
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from users where username='" + username + "'");
+            ResultSet rs = statement.executeQuery("select * from users where ID='" + username + "'");
             if (rs.next()) {
                 String ID = rs.getString("ID");
                 String mail = rs.getString("mail");
@@ -277,23 +277,22 @@ public class Model implements IModel {
         }
     }
 
-//    @Override
-//    public void addUser(User user) {
-//        try {
-//            openConnection();
-//            Statement statement = connection.createStatement();
-//            String command = "insert into users values(" +
-//                    "'" + user.username + "', " +
-//                    "'" + user.mail + "', " +
-//                    "'" + user.password + "', " +
-//                    "'" + user.status + "', " +
-//                    "'" + user.organization + "', " +
-//                    "'" + user.type + "'" + ")";
-//            statement.executeUpdate(command);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } finally {
-//            closeConnection();
-//        }
-//    }
+    @Override
+    public void addUser(User user) {
+        try {
+            openConnection();
+            Statement statement = connection.createStatement();
+            String command = "insert into users values(" +
+                    "'" + user.username + "', " +
+                    "'" + user.mail + "', " +
+                    "'" + user.password + "', " +
+                    "'" + user.status + "', " +
+                    "'" + user.organization + "')";
+            statement.executeUpdate(command);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+    }
 }

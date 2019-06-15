@@ -1,4 +1,5 @@
-import Model.TestModel;
+import Model.*;
+import Model.Enum;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,8 +19,9 @@ public class Main extends Application {
         primaryStage.setTitle("EmerAgency");
         primaryStage.setScene(new Scene(root, 600, 400));
 
+        Model model = new Model();
         Controller controller = fxmlLoader.getController();
-        controller.setModel(new Model.Model());
+        controller.setModel(model);
         controller.initialize();
 
         primaryStage.show();
