@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Controller {
@@ -49,7 +50,9 @@ public class Controller {
     public TextField categoryNameTextfield;
 
     public void initialize(){
-        eventOrganizationChoicebox.setItems(FXCollections.observableArrayList(Enum.Organization.SecurityForces.values()));
+        ObservableList<Enum.Organization> secForces = FXCollections.observableArrayList();
+        secForces.addAll(Enum.Organization.FIREMEN, Enum.Organization.POLICE, Enum.Organization.REDCROSS);
+        eventOrganizationChoicebox.setItems(secForces);
         // Set columns of search results table
         idColumn.setCellValueFactory(new PropertyValueFactory<EventEntry, String>("ID"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<EventEntry, String>("title"));
@@ -128,7 +131,7 @@ public class Controller {
 
     public void createEvent() {
         Event event = EventFactory.createEvent(eventTitleTextfield.getText(),
-                (Enum.Organization.SecurityForces) eventOrganizationChoicebox.getValue(),
+                (Enum.Organization) eventOrganizationChoicebox.getValue(),
                 model.getCurrentUser().username,
                 (Category) eventCategoryChoicebox.getValue());
         model.addEvent(event);
@@ -199,9 +202,10 @@ public class Controller {
     public void checkEvent(Event event){
         findEventEventIDText.setText(String.valueOf(event.id));
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        findEventEventDateText.setText(formatter.format(event.date));
+//        findEventEventDateText.setText(formatter.format(event.date));
+        findEventEventDateText.setText(event.date.toString());
         String secForcesString = "";
-        for (Enum.Organization.SecurityForces securityForce : event.securityForces){
+        for (Enum.Organization securityForce : event.securityForces){
             secForcesString += securityForce+" ";
         }
         findEventEventOrgText.setText(secForcesString);
